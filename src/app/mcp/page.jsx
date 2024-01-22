@@ -21,7 +21,7 @@ const QuizApp = () => {
   const handleNextQuestion = () => {
     setIsAnswered(false);
     if (currentQuestion < questionsData.length - 1) {
-      setCurrentQuestion((prevQuestion) => prevQuestion + 15);
+      setCurrentQuestion((prevQuestion) => prevQuestion + 1);
     } else {
       // Quiz completed
       alert(
