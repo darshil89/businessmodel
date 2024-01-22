@@ -8,22 +8,52 @@ const QuizApp = () => {
   const [timeTaken, setTimeTaken] = useState(0);
   const [isAnswered, setIsAnswered] = useState(false);
 
+  //track of score
+  const [firstScore, setFirstScore] = useState(0);
+  const [secondScore, setSecondScore] = useState(0);
+  const [thirdScore, setThirdScore] = useState(0);
+  const [fourthScore, setFourthScore] = useState(0);
+  const [fifthScore, setFifthScore] = useState(0);
+
+  const [counterScore, setCounterScore] = useState(1);
+
   const handleAnswer = (selectedOption) => {
     if (!isAnswered) {
       const currentAnswer = questionsData[currentQuestion].correctAnswer;
       const isCorrect = currentAnswer === selectedOption;
 
       setScore((prevScore) => (isCorrect ? prevScore + 10 : prevScore + 2));
+
       setIsAnswered(true);
     }
   };
 
   const handleNextQuestion = () => {
+    if (counterScore == 12) {
+      setFirstScore(score);
+      console.log(firstScore);
+    } else if (counterScore == 24) {
+      setSecondScore(score - firstScore);
+      console.log(secondScore);
+    } else if (counterScore == 36) {
+      setThirdScore(score - firstScore - secondScore);
+      console.log(thirdScore);
+    } else if (counterScore == 48) {
+      setFourthScore(score - firstScore - secondScore - thirdScore);
+      console.log(fourthScore);
+    } else if (counterScore == 60) {
+      setFifthScore(
+        score - firstScore - secondScore - thirdScore - fourthScore
+      );
+      console.log(fifthScore);
+    }
+
+    setCounterScore((prevScore) => prevScore + 1);
     setIsAnswered(false);
     if (currentQuestion < questionsData.length - 1) {
       setCurrentQuestion((prevQuestion) => prevQuestion + 1);
     } else {
-      // Quiz completed
+    // Quiz completed
       alert(
         `Quiz completed! Your final score is ${score} and total time taken is ${timeTaken} seconds.`
       );
@@ -33,14 +63,22 @@ const QuizApp = () => {
   useEffect(() => {
     let timer;
     if (!isAnswered) {
-      
       timer = setTimeout(() => {
-        setTimeTaken((prevTime) => prevTime + 15);
         handleNextQuestion();
-      }, 15000);
+      }, 15000); 
     }
     return () => clearTimeout(timer);
   }, [currentQuestion, isAnswered]);
+
+  if (
+    firstScore > 0 ||
+    secondScore > 0 ||
+    thirdScore > 0 ||
+    fourthScore > 0 ||
+    fifthScore > 0
+  ) {
+    console.log(firstScore, secondScore, thirdScore, fourthScore, fifthScore);
+  }
 
   return (
     <div className="bg-white rounded-lg shadow-lg p-6 w-96 mx-auto mt-8">
