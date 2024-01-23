@@ -277,8 +277,8 @@ const QuizApp = () => {
 
     return (
       <div className="container mx-auto mt-8 p-4 bg-white rounded-lg shadow-lg text-center">
-        <div className="text-3xl font-bold mb-4">Results</div>
-        <div className="result-box bg-blue-300 text-white py-3 px-6 mb-4">
+        <div className="text-3xl text-gray-500 font-bold mb-4">Results</div>
+        {/* <div className="result-box bg-blue-300 text-white py-3 px-6 mb-4">
           Passion Of Success: {firstScore}
         </div>
         <div className="result-box bg-green-300 text-white py-3 px-6 mb-4">
@@ -292,7 +292,7 @@ const QuizApp = () => {
         </div>
         <div className="result-box bg-red-300 text-white py-3 px-6 mb-4">
           Resolute Motivation: {fifthScore}
-        </div>
+        </div> */}
         <div className="result-box bg-orange-300 text-white py-3 px-6 mb-4">
           Overall Score: {score / 1.5} %
         </div>
