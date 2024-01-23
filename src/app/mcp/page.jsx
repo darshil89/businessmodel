@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import questionsData from "../../data/data";
-import { useRouter } from "next/navigation";
 
 const QuizApp = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -16,7 +15,7 @@ const QuizApp = () => {
   const [thirdScore, setThirdScore] = useState(0);
   const [fourthScore, setFourthScore] = useState(0);
   const [fifthScore, setFifthScore] = useState(0);
-  const router = useRouter();
+  
 
   const [counterScore, setCounterScore] = useState(15);
 
