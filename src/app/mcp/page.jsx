@@ -155,9 +155,7 @@ const QuizApp = () => {
       setCurrentQuestion((prevQuestion) => prevQuestion + 1);
     } else {
       setIsQuizCompleted(true);
-      alert(
-        `Quiz completed! Your final score is ${score} and total time taken is ${timeTaken} seconds.`
-      );
+      
     }
   };
 
