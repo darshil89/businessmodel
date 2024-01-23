@@ -278,26 +278,26 @@ const QuizApp = () => {
     return (
       <div className="container mx-auto mt-8 p-4 bg-white rounded-lg shadow-lg text-center">
         <div className="text-3xl font-bold mb-4">Results</div>
-        <div className="result-box bg-blue-500 text-white py-3 px-6 mb-4">
+        <div className="result-box bg-blue-300 text-white py-3 px-6 mb-4">
           Passion Of Success: {firstScore}
         </div>
-        <div className="result-box bg-green-500 text-white py-3 px-6 mb-4">
+        <div className="result-box bg-green-300 text-white py-3 px-6 mb-4">
           Independent Drive: {secondScore}
         </div>
-        <div className="result-box bg-yellow-500 text-gray-800 py-3 px-6 mb-4">
+        <div className="result-box bg-yellow-200 text-white py-3 px-6 mb-4">
           Innovative Spirit: {thirdScore}
         </div>
-        <div className="result-box bg-red-500 text-white py-3 px-6 mb-4">
+        <div className="result-box bg-red-300 text-white py-3 px-6 mb-4">
           Strategic Risk Management: {fourthScore}
         </div>
-        <div className="result-box bg-red-500 text-white py-3 px-6 mb-4">
+        <div className="result-box bg-red-300 text-white py-3 px-6 mb-4">
           Resolute Motivation: {fifthScore}
         </div>
-        <div className="result-box bg-orange-500 text-white py-3 px-6 mb-4">
-          Overall Score: {score}
+        <div className="result-box bg-orange-300 text-white py-3 px-6 mb-4">
+          Overall Score: {score / 1.5} %
         </div>
-        <div className="result-box bg-purple-500 text-white py-3 px-6 mb-4">
-          Total Time: {timeTaken}
+        <div className="result-box bg-purple-300 text-white py-3 px-6 mb-4">
+          Total Time: {timeTaken + 15 } seconds
         </div>
 
         <div>
