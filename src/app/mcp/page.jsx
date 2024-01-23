@@ -238,6 +238,9 @@ const QuizApp = () => {
         <div className="result-box bg-red-500 text-white py-3 px-6 mb-4">
           Strategic Risk Management: {fourthScore}
         </div>
+        <div className="result-box bg-red-500 text-white py-3 px-6 mb-4">
+          Resolute Motivation: {fifthScore}
+        </div>
         <div className="result-box bg-orange-500 text-white py-3 px-6 mb-4">
           Overall Score: {score}
         </div>
