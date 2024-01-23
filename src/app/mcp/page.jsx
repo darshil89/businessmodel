@@ -15,9 +15,8 @@ const QuizApp = () => {
   const [thirdScore, setThirdScore] = useState(0);
   const [fourthScore, setFourthScore] = useState(0);
   const [fifthScore, setFifthScore] = useState(0);
-  
 
-  const [counterScore, setCounterScore] = useState(15);
+  const [counterScore, setCounterScore] = useState(1);
 
   const handleAnswer = (selectedOption) => {
     if (!isAnswered) {
@@ -25,25 +24,29 @@ const QuizApp = () => {
       const isCorrect = currentAnswer === selectedOption;
 
       setScore((prevScore) => (isCorrect ? prevScore + 10 : prevScore + 2));
-
       setIsAnswered(true);
     }
   };
 
   const handleNextQuestion = () => {
     setCounter(15);
-    if (counterScore == 12) {
-      setFirstScore(score);
-    } else if (counterScore == 24) {
+    if (counterScore == 3) {
+      setFirstScore(score); 
+      console.log(firstScore);
+    } else if (counterScore == 6) {
       setSecondScore(score - firstScore);
-    } else if (counterScore == 36) {
+      console.log(secondScore);
+    } else if (counterScore == 9) {
       setThirdScore(score - firstScore - secondScore);
-    } else if (counterScore == 48) {
+      console.log(thirdScore);
+    } else if (counterScore == 12) {
       setFourthScore(score - firstScore - secondScore - thirdScore);
-    } else if (counterScore == 60) {
+      console.log(fourthScore);
+    } else if (counterScore == 15) {
       setFifthScore(
         score - firstScore - secondScore - thirdScore - fourthScore
       );
+      console.log(fifthScore);
     }
 
     setCounterScore((prevScore) => prevScore + 1);
@@ -56,13 +59,16 @@ const QuizApp = () => {
         `Quiz completed! Your final score is ${score} and total time taken is ${timeTaken} seconds.`
       );
     }
-  };
+  }
 
   useEffect(() => {
     let timer;
     if (!isAnswered) {
       timer = setInterval(() => {
         setCounter((prev) => prev - 1);
+        if (!isQuizCompleted) {
+          setTimeTaken((prev) => prev + 1);
+        }
         if (counter == 1) {
           handleNextQuestion();
           clearInterval(timer);
@@ -72,15 +78,7 @@ const QuizApp = () => {
     return () => clearInterval(timer);
   }, [currentQuestion, isAnswered, counter]);
 
-  if (
-    firstScore > 0 ||
-    secondScore > 0 ||
-    thirdScore > 0 ||
-    fourthScore > 0 ||
-    fifthScore > 0
-  ) {
-    console.log(firstScore, secondScore, thirdScore, fourthScore, fifthScore);
-  }
+  
 
   if (!isQuizCompleted) {
     return (
@@ -89,7 +87,7 @@ const QuizApp = () => {
           Question {currentQuestion + 1}
         </h2>
 
-        <p className="text-gray-800 mb-4">
+        <p className="text-gray-700 text-xl mb-4">
           {questionsData[currentQuestion].question}
         </p>
 
@@ -119,14 +117,6 @@ const QuizApp = () => {
 
         {isAnswered && (
           <div className="mt-4">
-            {/* <p className="text-green-500 font-bold">
-                {questionsData[currentQuestion].correctAnswer === "agree"
-                  ? "Agree"
-                  : "Disagree"}{" "}
-                was the correct answer!
-              </p>
-              <p className="text-gray-700">Score: {score}</p>
-              <p className="text-gray-700">Time taken: {timeTaken} seconds</p> */}
             <button
               onClick={handleNextQuestion}
               className="mt-4 bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded focus:outline-none"
@@ -153,8 +143,11 @@ const QuizApp = () => {
         <div className="result-box bg-red-500 text-white py-3 px-6 mb-4">
           Strategic Risk Management: {fourthScore}
         </div>
-        <div className="result-box bg-purple-gray-500 text-white py-3 px-6 mb-4">
+        <div className="result-box bg-orange-500 text-white py-3 px-6 mb-4">
           Overall Score: {score}
+        </div>
+        <div className="result-box bg-purple-500 text-white py-3 px-6 mb-4">
+          Total Time: {timeTaken}
         </div>
       </div>
     );
